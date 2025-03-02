@@ -18,12 +18,16 @@ def get_uom():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+#get product details
+
 @app.route('/getProducts', methods=['GET'])
 def get_products():
     response = products_dao.get_all_products(connection)
     response = jsonify(response)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+
+#insert new product
 
 @app.route('/insertProduct', methods=['POST'])
 def insert_product():
@@ -35,12 +39,16 @@ def insert_product():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+#get all Order details 
+
 @app.route('/getAllOrders', methods=['GET'])
 def get_all_orders():
     response = orders_dao.get_all_orders(connection)
     response = jsonify(response)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+
+#insert new order
 
 @app.route('/insertOrder', methods=['POST'])
 def insert_order():
@@ -52,6 +60,8 @@ def insert_order():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+#delete produt
+
 @app.route('/deleteProduct', methods=['POST'])
 def delete_product():
     return_id = products_dao.delete_product(connection, request.form['product_id'])
@@ -60,6 +70,7 @@ def delete_product():
     })
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+
 
 if __name__ == "__main__":
     print("Starting Python Flask Server For Grocery Store Management System")
